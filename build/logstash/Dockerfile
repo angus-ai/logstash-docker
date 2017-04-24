@@ -26,7 +26,7 @@ ENV PATH=/usr/share/logstash/bin:$PATH
 # Provide a minimal configuration, so that simple invocations will provide
 # a good experience.
 ADD config/logstash.yml config/log4j2.properties /usr/share/logstash/config/
-ADD pipeline/default.conf /usr/share/logstash/pipeline/logstash.conf
+RUN mkdir -p /usr/share/logstash/pipeline
 RUN chown --recursive logstash:logstash /usr/share/logstash/config/ /usr/share/logstash/pipeline/
 
 # Ensure Logstash has a UTF-8 locale available.
