@@ -3,7 +3,6 @@ MAINTAINER Elastic Docker Team <docker@elastic.co>
 
 ARG ELASTIC_VERSION
 ARG LOGSTASH_DOWNLOAD_URL
-ARG LOGSTASH_PACK_URL
 
 # Install curl for downloading, Java for running Logstash/JRuby, and netbase
 # to resolve a warning from JRuby (https://github.com/jruby/jruby/issues/3955).
@@ -39,8 +38,6 @@ ADD bin/docker-entrypoint /usr/local/bin/
 RUN chmod 0755 /usr/local/bin/docker-entrypoint
 
 USER logstash
-
-RUN cd /usr/share/logstash && LOGSTASH_PACK_URL=${LOGSTASH_PACK_URL} logstash-plugin install x-pack
 
 ADD env2yaml/env2yaml /usr/local/bin/
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]
