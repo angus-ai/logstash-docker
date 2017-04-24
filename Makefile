@@ -7,7 +7,9 @@ ifdef STAGING_BUILD_NUM
 VERSION_TAG=$(ELASTIC_VERSION)-${STAGING_BUILD_NUM}
 LOGSTASH_DOWNLOAD_URL=http://staging.elastic.co/$(VERSION_TAG)/downloads/logstash/logstash-${ELASTIC_VERSION}.tar.gz
 else
-VERSION_TAG=$(ELASTIC_VERSION)
+ifndef VERSION_TAG
+VERSION_TAG=$(ELASTIC_VERSION)_angus_latest
+endif
 LOGSTASH_DOWNLOAD_URL=https://artifacts.elastic.co/downloads/logstash/logstash-${ELASTIC_VERSION}.tar.gz
 endif
 
