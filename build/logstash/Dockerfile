@@ -37,8 +37,6 @@ ENV LANG='en_US.UTF-8' LC_ALL='en_US.UTF-8'
 ADD bin/docker-entrypoint /usr/local/bin/
 RUN chmod 0755 /usr/local/bin/docker-entrypoint
 
-USER logstash
-
 ADD env2yaml/env2yaml /usr/local/bin/
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]
 CMD ["-f", "/usr/share/logstash/pipeline/"]
